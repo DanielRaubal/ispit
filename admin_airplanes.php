@@ -110,7 +110,21 @@
 
 		<div class="gap-y-4 flex flex-col">
 
-			<div class="bg-white border shadow-sm rounded-lg w-2/3 py-6 m-auto p-4">
+			<div class="bg-white border shadow-sm rounded-lg  py-6 m-auto p-4 container ">
+
+				<div class="flex flex-row">
+
+					<a href="admin.php" class="w-full ">
+						<button class=" border mt-4 rounded-lg px-6 w-full bg-gray-200 border my-4">
+							<p class="font-bold px-6 py-2 text-xl m-auto">Admin panel</p>
+						</button>
+					</a>
+					<a href="admin_add.php" class="w-full ">
+						<button class="bg-white border mt-4 rounded-lg px-6 w-full hover:bg-blue-500 hover:text-white mt-4">
+							<p class="font-bold px-6 py-2 text-xl m-auto">Add New Airplane</p>
+						</button>
+					</a>
+				</div>
 
 				<table>
 					<tr>
