@@ -1,0 +1,24 @@
+@keyframes animation_color_changer {
+  0% {color: #1d4ed8;}
+  50% {color: #3730a3;}
+  100% {color: #1d4ed8;}
+}
+
+.color_changer {
+	color: #60a5fa;
+  animation: infinite animation_color_changer 8s;
+}
+
+
+body {
+  font-family: 'Poppins', sans-serif; /* Use Poppins font */
+}
+
+.unselectable {
+ user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
