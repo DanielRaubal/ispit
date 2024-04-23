@@ -2,12 +2,13 @@
 require "database.php";
 session_start();
 
-UpdateAirplane();
 
+UpdateAirplane();
 function UpdateAirplane()
 {
 	$conn = ConnectToDatabase();
 
+	$id = $_SESSION["airplane_id"];
 	$manufacturer = $_POST["manufacturer"];
 	$model = $_POST["model"];
 	$mileage = $_POST["mileage"];
@@ -50,7 +51,7 @@ function UpdateAirplane()
 	$insertStmt->bindParam(':airplane_length', $length);
 	$insertStmt->bindParam(':airplane_price', $price);
 	$insertStmt->bindParam(':airplane_state', $state);
-	$insertStmt->bindParam(':airplane_id', $_SESSION["airplane_id"]);
+	$insertStmt->bindParam(':airplane_id', $id);
 
 
 	try {
@@ -66,6 +67,6 @@ function UpdateAirplane()
 	}
 
 
-	header("Location: admin_airplanes.php");
+	header("Location: admin_airplane_edit.php");
 	die();
 }

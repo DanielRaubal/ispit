@@ -10,65 +10,69 @@
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
 	<title>planesforever.com -
 		<?php
-		#include "database.php";
+		include "database.php";
+		echo ScriptName(); ?>
+	</title>
+	<?php
+	session_start();
+
+	IsNotUser();
 
 
-		// $currentPage = $_SERVER['SCRIPT_NAME'];
-		// echo basename($_SERVER["SCRIPT_FILENAME"], '.php');
+	// $currentPage = $_SERVER['SCRIPT_NAME'];
+	// echo basename($_SERVER["SCRIPT_FILENAME"], '.php');
 
-		session_start();
-		#CheckUser();
-		if (
-			!isset($_SESSION["user_role"])
-			|| $_SESSION["user_role"] == "admin"
-		) {
-			header("Location: login.php");
-			die();
-		}
+	#CheckUser();
+	// if (
+	// 	!isset($_SESSION["user_role"])
+	// 	|| $_SESSION["user_role"] == "admin"
+	// ) {
+	// 	header("Location: login.php");
+	// 	die();
+	// }
 
 
-		if (isset($_GET['id'])) {
-			$id = $_GET['id'];
+	if (isset($_GET['id'])) {
+		$id = $_GET['id'];
 
-			if (isset($id)) {
-				include "database.php";
-				$conn = ConnectToDatabase();
+		if (isset($id)) {
+			$conn = ConnectToDatabase();
 
-				// Check if the email already exists
-				$checkStmt = $conn->prepare("SELECT * FROM airplane_table WHERE airplane_id = :id");
-				$checkStmt->bindParam(':id', $id);
-				$checkStmt->execute();
+			// Check if the email already exists
+			$checkStmt = $conn->prepare("SELECT * FROM airplane_table WHERE airplane_id = :id");
+			$checkStmt->bindParam(':id', $id);
+			$checkStmt->execute();
 
-				if ($checkStmt->columnCount() > 0) {
+			if ($checkStmt->columnCount() > 0) {
 
-					$airplaneData = $checkStmt->fetch(PDO::FETCH_ASSOC);
-					$id = $airplaneData["airplane_id"];
+				$airplaneData = $checkStmt->fetch(PDO::FETCH_ASSOC);
+				$id = $airplaneData["airplane_id"];
 
-					$manufacturer = $airplaneData["airplane_manufacturer"];
-					$model = $airplaneData["airplane_model"];
-					$mileage = $airplaneData["airplane_mileage"];
-					$about = $airplaneData["airplane_about"];
-					$motors = $airplaneData["airplane_motors"];
-					$seats = $airplaneData["airplane_seats"];
-					$year = $airplaneData["airplane_year"];
-					$date = $airplaneData["airplane_created"];
-					$range = $airplaneData["airplane_range"];
-					$wingspan = $airplaneData["airplane_wingspan"];
-					$length = $airplaneData["airplane_length"];
-					$price = $airplaneData["airplane_price"];
-					$state = $airplaneData["airplane_state"];
-					#$price = $airplaneData["airplane_"];
-				}
+				$manufacturer = $airplaneData["airplane_manufacturer"];
+				$model = $airplaneData["airplane_model"];
+				$mileage = $airplaneData["airplane_mileage"];
+				$about = $airplaneData["airplane_about"];
+				$motors = $airplaneData["airplane_motors"];
+				$seats = $airplaneData["airplane_seats"];
+				$year = $airplaneData["airplane_year"];
+				$date = $airplaneData["airplane_created"];
+				$range = $airplaneData["airplane_range"];
+				$wingspan = $airplaneData["airplane_wingspan"];
+				$length = $airplaneData["airplane_length"];
+				$price = $airplaneData["airplane_price"];
+				$state = $airplaneData["airplane_state"];
+				#$price = $airplaneData["airplane_"];
 			}
-
-
-			// Now you can use $nigValue in your code
-		} else {
-			// Parameter not set, handle the case accordingly
 		}
 
 
-		?>
+		// Now you can use $nigValue in your code
+	} else {
+		// Parameter not set, handle the case accordingly
+	}
+
+
+	?>
 
 
 	</title>
@@ -87,7 +91,7 @@
 		<div class="container flex flex-col justify-center m-auto px-4 mb-2 ">
 
 			<div class="w-full flex justify-center mx-auto shadow-lg border-2  rounded-lg mb-14 ">
-				<img src="../pay_plane/src/images/747.webp" class="w-full rounded-lg h-full m-auto object-cover">
+				<img src="../pay_plane/src/images/airplane_high.webp" class="w-full rounded-lg h-full m-auto object-cover">
 			</div>
 
 

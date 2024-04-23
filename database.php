@@ -4,6 +4,9 @@ $username = "root";
 $password = "123";
 $dbname = "pay_plane";
 
+if (!isset($_SESSION["user_logout"])) {
+	$_SESSION["user_logout"] = false;
+}
 
 
 function ConnectToDatabase()
@@ -119,6 +122,70 @@ function CheckUser()
 }
 
 
+function IsNotAdmin()
+{
+	if (isset($_SESSION["user_role"])) {
+		if (
+			$_SESSION["user_role"] == "user"
+		) {
+			header("Location: search.php");
+			die();
+		}
+	} else {
+		header("Location: login.php");
+		die();
+	}
+}
+
+
+function IsNotUser()
+{
+	if (isset($_SESSION["user_role"])) {
+		if (
+			$_SESSION["user_role"] == "admin"
+		) {
+			header("Location: admin.php");
+			die();
+		}
+	} else {
+		header("Location: login.php");
+		die();
+	}
+}
+
+
+
+
+
+
+function IsLoggedIn()
+{
+	if (isset($_SESSION["user_role"])) {
+		if ($_SESSION["user_role"] == "admin") {
+			header("Location: admin.php");
+			die();
+		}
+		header("Location: search.php");
+		die();
+	}
+
+
+	if (basename($_SERVER['PHP_SELF']) != "login.php") {
+		header("Location: login.php");
+		die();
+	}
+}
+
+
+
+function ScriptName()
+{
+	$currentPage = $_SERVER['SCRIPT_NAME'];
+	return basename($_SERVER["SCRIPT_FILENAME"], '.php');
+}
+
+
+
 function ClearSessions($values)
 {
 	foreach ($values as &$value) {
@@ -145,6 +212,23 @@ function Footer()
 
 function NavBar()
 {
+	$cart = "";
+	$login = "";
+	if (isset($_SESSION['user_role'])) {
+		if ($_SESSION['user_role'] == "user") {
+			$cart = " <li>
+                    <a href='cart.php' class='block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'>Cart</a>
+                </li>";
+		}
+	}
+
+	if (!isset($_SESSION['user_role'])) {
+		$login = "  <li>
+                    <a href='login.php' class='block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500' aria-current='page'>Login</a>
+                </li>";
+	}
+
+
 	echo "
 	<nav class='bg-white border-gray-200 dark:bg-gray-900 border-b mb-10'>
     <div class='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
@@ -160,15 +244,14 @@ function NavBar()
         </button>
         <div class='hidden w-full md:block md:w-auto' id='navbar-default'>
             <ul class='font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700'>
-                <li>
-                    <a href='login.php' class='block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500' aria-current='page'>Login</a>
-                </li>
+              	$login
                 <li>
                     <a href='signup.php' class='block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'>SignUp</a>
                 </li>
                 <li>
                     <a href='logout.php' class='block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'>Logout</a>
                 </li>
+				$cart
             </ul>
         </div>
     </div>

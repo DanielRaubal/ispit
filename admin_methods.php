@@ -1,27 +1,12 @@
 <?php
 require "database.php";
+session_start();
+IsNotAdmin();
 
 if (isset($_POST['execute'])) {
 	// Your PHP script code goes here
 	ValidateUser($_POST['user_id']);
 }
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['execute'])) {
-// 	$execute_value = $_POST['execute'];
-// 	$user_id = $_POST['user_id'];
-
-// 	if ($execute_value == 'validate') {
-// 		// The Validate button was clicked
-// 		echo "Validate button clicked for user ID: $user_id";
-// 	} elseif ($execute_value == 'edit') {
-// 		// The Edit button was clicked
-// 		echo "Edit button clicked for user ID: $user_id";
-// 	} else {
-// 		// Handle other cases if needed
-// 	}
-// }
-
-
 
 function ValidateUser($id)
 {

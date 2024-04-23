@@ -10,31 +10,43 @@
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
 	<title>planesforever.com -
 		<?php
-		$currentPage = $_SERVER['SCRIPT_NAME'];
-		echo basename($_SERVER["SCRIPT_FILENAME"], '.php'); ?>
+		include "database.php";
+		echo ScriptName(); ?>
 	</title>
 
 	<?php
-
-	include "database.php";
-
-
-
 	session_start();
+	IsNotAdmin();
 
 	$conn = ConnectToDatabase();
 
+	if (!isset($_POST['airplane_id'])) {
+		header("Location: admin_airplanes.php");
+		die();
+	}
+
 	$airplane_id = $_POST['airplane_id']; // Assuming you're getting user_id from the form submission
+	echo "AIRCRAFT|||$airplane_id|||| <br><br>";
+
+
 	$_SESSION['airplane_id'] = $airplane_id;
+
+
 
 
 	$stmt = $conn->prepare("SELECT * FROM airplane_table WHERE airplane_id = :airplane_id");
 	$stmt->bindParam(':airplane_id', $airplane_id);
 	$stmt->execute();
 
-	if ($stmt->rowCount() > 0) {
+
+	if ($stmt->columnCount() > 0) {
 		// User found, fetch the data
 		$airplane = $stmt->fetch(PDO::FETCH_ASSOC);
+
+		// Display all columns
+		echo "<pre>";
+		print_r($airplane);
+		echo "</pre>";
 
 
 		$manufacturer = $airplane["airplane_manufacturer"];
@@ -103,45 +115,8 @@
 </head>
 
 <body>
-
-
-
-
 	<div class="justify-between flex flex-col absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
-
-
-		<nav class="bg-white border-gray-200 dark:bg-gray-900 border-b mb-10">
-			<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-				<a href="index.php" class="flex items-center space-x-3 rtl:space-x-reverse">
-					<img src="../pay_plane/src/images/favicon.png" class="h-8 opacity-60 hover:animate-pulse" alt="Flowbite Logo" />
-					<span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
-				</a>
-				<button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-					<span class="sr-only">Open main menu</span>
-					<svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-						<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
-					</svg>
-				</button>
-				<div class="hidden w-full md:block md:w-auto" id="navbar-default">
-					<ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-						<li>
-							<a href="login.php" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Login</a>
-						</li>
-						<li>
-							<a href="signup.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">SignUp</a>
-						</li>
-						<li>
-							<a href="logout.php" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Logout</a>
-						</li>
-
-					</ul>
-				</div>
-			</div>
-		</nav>
-
-
-
-
+		<?php NavBar(); ?>
 		<div class="gap-y-4 flex flex-col">
 
 
@@ -151,9 +126,12 @@
 					<div class="border-red-500 px-4">
 						<h1 class="font-bold text-gray-400 pb-2 text-3xl">Add New Aircraft</h1>
 
-						<?php if (isset($_SESSION['airplane_created'])) {
-							echo $_SESSION["airplane_created"];
-						} ?>
+						<p class="font-bold text-gray-400 pb-2 text-xl">
+							<?php if (isset($_SESSION['airplane_created']) && $_SESSION['airplane_created'] != "") {
+								echo "Message: $_SESSION[airplane_created]";
+								$_SESSION["airplane_created"] = "";
+							} ?>
+						</p>
 
 						<label for="model">Aircraft model name</label>
 						<input class="border-b w-full py-2" type="text" placeholder="model" name="model" value="<?php echo $model; ?>" required>
@@ -171,22 +149,22 @@
 						<input class="border-b w-full py-2" type="text" placeholder="motors" name="motors" value="<?php echo $motors; ?>" required>
 
 						<label for="price">Price</label>
-						<input class="border-b w-full py-2" type="text" placeholder="price" name="price" value="<?php echo $price; ?>" required>
+						<input class="border-b w-full py-2" type="number" placeholder="price" name="price" value="<?php echo $price; ?>" required>
 
 						<label for="about">About</label>
 						<input class="border-b w-full py-2" type="text" placeholder="about" name="about" value="<?php echo $about; ?>" required>
 
 						<label for="length">Length</label>
-						<input class="border-b w-full py-2" type="text" placeholder="length" name="length" value="<?php echo $length; ?>" required>
+						<input class="border-b w-full py-2" type="number" placeholder="length" name="length" value="<?php echo $length; ?>" required>
 
 						<label for="wingspan">Wingspan</label>
-						<input class="border-b w-full py-2" type="text" placeholder="wingspan" name="wingspan" value="<?php echo $wingspan; ?>" required>
+						<input class="border-b w-full py-2" type="number" placeholder="wingspan" name="wingspan" value="<?php echo $wingspan; ?>" required>
 
 						<label for="range">Range</label>
-						<input class="border-b w-full py-2" type="text" placeholder="range" name="range" value="<?php echo $range; ?>" required>
+						<input class="border-b w-full py-2" type="number" placeholder="range" name="range" value="<?php echo $range; ?>" required>
 
 						<label for="seats">Seats</label>
-						<input class="border-b w-full py-2" type="text" placeholder="seats" name="seats" value="<?php echo $seats; ?>" required>
+						<input class="border-b w-full py-2" type="number" placeholder="seats" name="seats" value="<?php echo $seats; ?>" required>
 
 						<div class="bg-white border mt-4 rounded-lg p-6 flex flex-col">
 							<label for="state">State</label>
@@ -204,36 +182,8 @@
 				</form>
 			</div>
 
-
-
-
-			<footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800 flex flex-col justify-between min-h-footer">
-				<div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-					<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© <?php echo date("Y"); ?> <a href="#" class="hover:underline">planesforever.com</a></span>
-					<ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-						<!-- <li>
-						<a href="#" class="hover:underline me-4 md:me-6">Home</a>
-					</li>
-
-					<li>
-						<a href="#" class="hover:underline">Contact</a>
-					</li> -->
-					</ul>
-				</div>
-			</footer>
-
-
-
-
-
+			<?php Footer(); ?>
 		</div>
-
-
-
-
-
-
-
 	</div>
 </body>
 

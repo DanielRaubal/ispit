@@ -2,6 +2,9 @@
 require "database.php";
 
 session_start();
+IsNotAdmin();
+
+
 
 var_dump($_SESSION);
 

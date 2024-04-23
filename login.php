@@ -4,7 +4,7 @@
 <?php
 include "database.php";
 session_start();
-CheckUser();
+IsLoggedIn();
 ?>
 
 
@@ -17,8 +17,7 @@ CheckUser();
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
 	<title>planesforever.com -
 		<?php
-		$currentPage = $_SERVER['SCRIPT_NAME'];
-		echo basename($_SERVER["SCRIPT_FILENAME"], '.php'); ?>
+		ScriptName(); ?>
 	</title>
 
 </head>
@@ -27,7 +26,7 @@ CheckUser();
 	<div class="justify-between flex flex-col absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
 		<?php NavBar(); ?>
 
-		<div class="bg-white border shadow-sm rounded-lg w-1/2 py-6 m-auto">
+		<div class="bg-white border  md:w-96 shadow-sm rounded-lg py-6 m-auto">
 			<form action="login_methods.php" method="post">
 				<div class="border-red-500 px-4">
 					<h1 class="font-bold text-gray-400 pb-2 text-3xl">Login</h1>
@@ -68,6 +67,7 @@ CheckUser();
 					?></h1>
 			</form>
 		</div>
+
 
 		<?php Footer(); ?>
 	</div>

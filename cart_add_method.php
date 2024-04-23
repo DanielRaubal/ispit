@@ -1,25 +1,10 @@
 <?php
 require "database.php";
-
 session_start();
+IsNotUser();
 
-#var_dump($_SESSION);
-
-// if (isset($_SESSION["user_validated"])) {
-// 	// Your PHP script code goes here
-// 	#CreateUser();
-// 	if ($_SESSION["user_role"] == "user" && $_SESSION["user_validated"] == 1) {
-// 		header("Location: search.php");
-// 		die();
-// 	}
-// } else {
-// 	header("Location: login.php");
-// 	die();
-// }
-
-
-CreateAircraft();
-function CreateAircraft()
+AddToCart();
+function AddToCart()
 {
 
 	$airplane_id = $_GET["id"];

@@ -10,14 +10,13 @@
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
 	<title>planesforever.com -
 		<?php
-		$currentPage = $_SERVER['SCRIPT_NAME'];
-		echo basename($_SERVER["SCRIPT_FILENAME"], '.php'); ?>
+		include "database.php";
+		echo ScriptName(); ?>
 	</title>
 
 	<?php
-
-	include "database.php";
 	session_start();
+	IsNotAdmin();
 
 	try {
 		$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -115,7 +114,7 @@
 				<div class="flex flex-row">
 
 					<a href="admin.php" class="w-full ">
-						<button class=" border mt-4 rounded-lg px-6 w-full bg-gray-200 border my-4">
+						<button class="mt-4 rounded-lg px-6 w-full bg-gray-200 border my-4">
 							<p class="font-bold px-6 py-2 text-xl m-auto">Admin panel</p>
 						</button>
 					</a>
@@ -133,7 +132,7 @@
 						<th>manufacturer</th>
 						<th>price</th>
 						<th>created</th>
-						<th>year</th>
+						<th>year of production</th>
 						<th>state</th>
 						<th colspan="3"></th>
 

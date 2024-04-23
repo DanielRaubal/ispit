@@ -3,7 +3,7 @@
 
 <?php include "database.php";
 session_start();
-CheckUser();
+IsNotUser();
 ?>
 
 <head>
@@ -13,7 +13,10 @@ CheckUser();
 	<link rel="stylesheet" href="../pay_plane/src/global.css">
 
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
-	<title>planesforever.com - Home</title>
+	<title>planesforever.com -
+		<?php
+		echo ScriptName(); ?>
+	</title>
 </head>
 
 <body>
@@ -56,7 +59,7 @@ CheckUser();
 					// Display airplane information
 					echo "<a href='item.php?id=$airplane_id' class='bg-white border rounded-lg shadow-sm w-full md:w-1/4 mt-4 hover:border-blue-300'>
             <div class='h-36 flex'>
-                <img src='../pay_plane/src/images/747.webp' class='w-full object-cover  h-36 m-auto rounded-lg'>
+                <img src='../pay_plane/src/images/airplane_high.webp' class='w-full object-cover  h-36 m-auto rounded-lg'>
                 <div class='bg-white rounded-full w-9 h-9 absolute flex opacity-60'>
                     <img src='../pay_plane/src/images/$icon' class='w-6 m-auto'>
                 </div>

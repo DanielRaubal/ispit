@@ -1,5 +1,7 @@
 <?php
 require "database.php";
+session_start();
+IsNotAdmin();
 
 session_start();
 DeleteAirplane();

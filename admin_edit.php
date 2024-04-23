@@ -10,17 +10,17 @@
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
 	<title>planesforever.com -
 		<?php
-		$currentPage = $_SERVER['SCRIPT_NAME'];
-		echo basename($_SERVER["SCRIPT_FILENAME"], '.php'); ?>
+		include "database.php";
+		echo ScriptName(); ?>
 	</title>
 
 	<?php
-
-	include "database.php";
-
-
-
 	session_start();
+
+	IsNotAdmin();
+
+
+
 
 	$conn = ConnectToDatabase();
 
@@ -168,8 +168,10 @@
 						<div class="bg-white border mt-4 rounded-lg p-6 flex flex-col">
 							<label for="roles">Role</label>
 							<select name="roles" id="roles" class="px-2 bg-white border rounded-sm p-2">
-								<option value="user" <?php if ($role === 'user') echo 'selected="selected"'; ?>>user</option>
-								<option value="admin" <?php if ($role === 'admin') echo 'selected="selected"'; ?>>admin</option>
+								<option value="user" <?php if ($role === 'user')
+															echo 'selected="selected"'; ?>>user</option>
+								<option value="admin" <?php if ($role === 'admin')
+															echo 'selected="selected"'; ?>>admin</option>
 							</select>
 						</div>
 

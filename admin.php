@@ -10,15 +10,14 @@
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
 	<title>planesforever.com -
 		<?php
-		$currentPage = $_SERVER['SCRIPT_NAME'];
-		echo basename($_SERVER["SCRIPT_FILENAME"], '.php'); ?>
+		include "database.php";
+		echo ScriptName(); ?>
 	</title>
 
 	<?php
-
-	include "database.php";
 	session_start();
 
+	IsNotAdmin();
 	?>
 
 	<style>
@@ -106,7 +105,6 @@
 
 
 
-				<?php CheckUser(); ?>
 				<table>
 					<tr>
 						<th>[id]</th>

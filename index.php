@@ -3,9 +3,8 @@
 
 <?php
 include "database.php";
-
 session_start();
-$_SESSION["user_logout"] = false;
+IsLoggedIn();
 ?>
 
 <head>
@@ -15,7 +14,10 @@ $_SESSION["user_logout"] = false;
 	<link rel="stylesheet" href="../pay_plane/src/global.css">
 
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
-	<title>planesforever.com - Home</title>
+	<title>planesforever.com -
+		<?php
+		echo ScriptName(); ?>
+	</title>
 
 	<script>
 		function toggleNavbar() {
@@ -27,23 +29,12 @@ $_SESSION["user_logout"] = false;
 			}
 		}
 	</script>
-
-
 </head>
 
 <body>
-
-
-
-
-	<div class="justify-between flex flex-col absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
-
-
+	<div class="justify-between flex flex-col absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] overflow-x-hidden">
 		<?php NavBar(); ?>
-
-
 		<div class="flex flex-col m-auto justify-center container">
-
 			<div class="flex flex-col md:flex-row ">
 
 				<div class="flex flex-col  my-auto">
@@ -53,32 +44,12 @@ $_SESSION["user_logout"] = false;
 					<p class=" flex px-8 text-blue-600 text-center justify-center">Take Flight, Make Profits: Sell Your Aircraft Hassle-Free!</p>
 				</div>
 
-
-
 				<img src="../pay_plane/src/images/suhoi.png" class="w-4/5 opacity-95 m-auto ">
-
 			</div>
-
-
-
-
-
-
-
-
-
-
-
 		</div>
-
-
-
 		<?php
 		Footer();
 		?>
-
-
-
 	</div>
 </body>
 

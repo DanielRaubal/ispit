@@ -10,18 +10,13 @@
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
 	<title>planesforever.com -
 		<?php
-		$currentPage = $_SERVER['SCRIPT_NAME'];
-		echo basename($_SERVER["SCRIPT_FILENAME"], '.php'); ?>
+		include "database.php";
+		echo ScriptName(); ?>
 	</title>
 
 	<?php
-
-	include "database.php";
-
-
-
 	session_start();
-
+	IsNotAdmin();
 
 
 
@@ -70,7 +65,7 @@
 	<div class="justify-between flex flex-col absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
 
 
-		
+		<?php NavBar(); ?>
 
 
 
@@ -81,9 +76,13 @@
 					<div class="border-red-500 px-4">
 						<h1 class="font-bold text-gray-400 pb-2 text-3xl">Add New Aircraft</h1>
 
-						<?php if (isset($_SESSION['airplane_created'])) {
-							echo $_SESSION["airplane_created"];
-						} ?>
+						<p class="font-bold text-gray-400 pb-2 text-xl">
+							<?php if (isset($_SESSION['airplane_created']) && $_SESSION['airplane_created'] != "") {
+								echo "Message: $_SESSION[airplane_created]";
+								$_SESSION["airplane_created"] = "";
+							} ?>
+						</p>
+
 
 						<label for="model">Aircraft model name</label>
 						<input class="border-b w-full py-2" type="text" placeholder="model" name="model" value="Model XYZ" required>
@@ -144,20 +143,7 @@
 
 		</div>
 
-		<footer class="border container   mx-auto bg-white rounded-lg shadow m-4 dark:bg-gray-800 flex flex-col justify-between min-h-footer">
-			<div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-				<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© <?php echo date("Y"); ?> <a href="#" class="hover:underline">planesforever.com</a></span>
-				<ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-					<!-- <li>
-						<a href="#" class="hover:underline me-4 md:me-6">Home</a>
-					</li>
-
-					<li>
-						<a href="#" class="hover:underline">Contact</a>
-					</li> -->
-				</ul>
-			</div>
-		</footer>
+		<?php Footer(); ?>
 
 
 

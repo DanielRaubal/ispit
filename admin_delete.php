@@ -1,11 +1,12 @@
 <?php
 require "database.php";
-
 session_start();
-ValidateUser();
+IsNotAdmin();
+
+DeleteUser();
 
 
-function ValidateUser()
+function DeleteUser()
 {
 	$conn = ConnectToDatabase();
 

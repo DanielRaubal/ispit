@@ -1,12 +1,13 @@
 <?php
 require "database.php";
-
-
-
 session_start();
+
+IsNotUser();
+
+
 #ValidateUser();
-ValidateUser();
-function ValidateUser()
+CartDelete();
+function CartDelete()
 {
 	$conn = ConnectToDatabase();
 
