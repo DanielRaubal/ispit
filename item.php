@@ -5,7 +5,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="stylesheet" href="../pay_plane/src/global.css">
 
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
 	<title>planesforever.com -
@@ -19,26 +18,12 @@
 	IsNotUser();
 
 
-	// $currentPage = $_SERVER['SCRIPT_NAME'];
-	// echo basename($_SERVER["SCRIPT_FILENAME"], '.php');
-
-	#CheckUser();
-	// if (
-	// 	!isset($_SESSION["user_role"])
-	// 	|| $_SESSION["user_role"] == "admin"
-	// ) {
-	// 	header("Location: login.php");
-	// 	die();
-	// }
-
-
 	if (isset($_GET['id'])) {
 		$id = $_GET['id'];
 
 		if (isset($id)) {
 			$conn = ConnectToDatabase();
 
-			// Check if the email already exists
 			$checkStmt = $conn->prepare("SELECT * FROM airplane_table WHERE airplane_id = :id");
 			$checkStmt->bindParam(':id', $id);
 			$checkStmt->execute();
@@ -61,41 +46,26 @@
 				$length = $airplaneData["airplane_length"];
 				$price = $airplaneData["airplane_price"];
 				$state = $airplaneData["airplane_state"];
-				#$price = $airplaneData["airplane_"];
 			}
 		}
-
-
-		// Now you can use $nigValue in your code
-	} else {
-		// Parameter not set, handle the case accordingly
 	}
 
 
 	?>
-
-
 	</title>
 </head>
 
 <body>
 
-
-
-
 	<div class=justify-between flex flex-col absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
 
 		<?php NavBar(); ?>
-
 
 		<div class="container flex flex-col justify-center m-auto px-4 mb-2 ">
 
 			<div class="w-full flex justify-center mx-auto shadow-lg border-2  rounded-lg mb-14 ">
 				<img src="../pay_plane/src/images/airplane_high.webp" class="w-full rounded-lg h-full m-auto object-cover">
 			</div>
-
-
-
 
 			<div class="justify-center flex  ">
 				<div class="bg-white border rounded-lg shadow-sm w-full  p-4 ">
@@ -108,22 +78,14 @@
 						} ?>
 					</a>
 
-
 					<div class=' flex justify-center text-blue-500 text-3xl font-bold px-4 py-1'>
 						<p class=""><?php echo "$price$ (USD)"; ?></p>
 
 					</div>
 
-
 					<p>General informations </p>
-					<?php
-
-
-
-					?>
 
 					<div class='mt-8'>
-
 
 						<div class='border-b flex justify-between px-4 py-1'>
 							<p>State of veichle: </p>
@@ -154,9 +116,6 @@
 							<p class="font-bold"><?php echo $date; ?></p>
 
 						</div>
-
-
-
 
 						<div class='border-b flex justify-between px-4 py-1 mt-4'>
 							<p>Mileage: </p>
@@ -203,8 +162,6 @@
 				</div>
 			</div>
 
-
-
 			<div class="justify-center flex mt-4 mb-16">
 				<div class="bg-white border rounded-lg shadow-sm w-full  p-4">
 					<p>About</p>
@@ -216,11 +173,6 @@
 
 
 		</div>
-
-
-
-
-
 
 	</div>
 </body>

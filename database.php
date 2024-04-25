@@ -169,11 +169,11 @@ function IsLoggedIn()
 		die();
 	}
 
-
+/*
 	if (basename($_SERVER['PHP_SELF']) != "login.php") {
 		header("Location: login.php");
 		die();
-	}
+	}*/
 }
 
 
@@ -214,12 +214,26 @@ function NavBar()
 {
 	$cart = "";
 	$login = "";
+	$default = "";
+	$logout = "";
+
+
 	if (isset($_SESSION['user_role'])) {
+
+		$default = "<li>
+                    <a href='admin.php' class='block py-2 px-3 text-blue-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'>Admin Panel</a>
+                </li>";
+		
 		if ($_SESSION['user_role'] == "user") {
 			$cart = " <li>
                     <a href='cart.php' class='block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'>Cart</a>
                 </li>";
+
+			$default = "<li>
+                    <a href='search.php' class='block py-2 px-3 text-blue-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'>Search Page</a>
+                </li>";
 		}
+		
 	}
 
 	if (!isset($_SESSION['user_role'])) {
@@ -227,6 +241,14 @@ function NavBar()
                     <a href='login.php' class='block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500' aria-current='page'>Login</a>
                 </li>";
 	}
+
+
+	if (isset($_SESSION['user_role'])) {
+		$logout = "<li>
+                    <a href='logout.php' class='block py-2 px-3 text-red-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-500 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'>Logout</a>
+                </li>";
+	}
+
 
 
 	echo "
@@ -245,13 +267,13 @@ function NavBar()
         <div class='hidden w-full md:block md:w-auto' id='navbar-default'>
             <ul class='font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700'>
               	$login
+				$default
                 <li>
                     <a href='signup.php' class='block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'>SignUp</a>
                 </li>
-                <li>
-                    <a href='logout.php' class='block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent'>Logout</a>
-                </li>
 				$cart
+              	$logout
+
             </ul>
         </div>
     </div>

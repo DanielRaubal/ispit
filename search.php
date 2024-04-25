@@ -10,7 +10,6 @@ IsNotUser();
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="stylesheet" href="../pay_plane/src/global.css">
 
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
 	<title>planesforever.com -
@@ -25,10 +24,6 @@ IsNotUser();
 
 		<div class="container m-auto flex-col">
 			<?php
-			#echo '<div class="w-full flex  flex-col md:flex-row gap-2 px-8 justify-center ">';
-
-			// for ($i = 0; $i < 5; $i++) {
-
 			$conn = ConnectToDatabase();
 
 			$checkStmt = $conn->prepare("SELECT * FROM airplane_table");
@@ -36,16 +31,14 @@ IsNotUser();
 			$airplanes = $checkStmt->fetchAll(PDO::FETCH_OBJ);
 			$shown_planes = 0;
 
-			// Calculate the number of rows needed based on the number of airplanes and display them in groups of 3
 			$rows = ceil(count($airplanes) / 3);
 
 			for ($i = 0; $i < $rows; $i++) {
 				echo '<div class="w-full flex flex-col md:flex-row gap-2 px-8 justify-center">';
 
 				for ($j = 0; $j < 3; $j++) {
-					// Check if there are more airplanes to display
 					if ($shown_planes >= count($airplanes)) {
-						break; // Exit the inner loop if there are no more airplanes
+						break;
 					}
 					$airplane = $airplanes[$shown_planes];
 					$airplane_id = $airplane->airplane_id;
@@ -56,7 +49,6 @@ IsNotUser();
 					}
 
 
-					// Display airplane information
 					echo "<a href='item.php?id=$airplane_id' class='bg-white border rounded-lg shadow-sm w-full md:w-1/4 mt-4 hover:border-blue-300'>
             <div class='h-36 flex'>
                 <img src='../pay_plane/src/images/airplane_high.webp' class='w-full object-cover  h-36 m-auto rounded-lg'>
@@ -74,7 +66,7 @@ IsNotUser();
             </div>
         </a>";
 
-					$shown_planes++; // Increment the counter for displayed airplanes
+					$shown_planes++;
 				}
 
 				echo '</div>';

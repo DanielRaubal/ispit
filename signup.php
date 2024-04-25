@@ -5,7 +5,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="stylesheet" href="../pay_plane/src/global.css">
 
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
 	<title>planesforever.com -
@@ -14,58 +13,16 @@
 		echo ScriptName(); ?>
 	</title>
 
-
-
-
 	<?php
-
 	session_start();
-
-	// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	// 	$_SESSION['username'] = $_POST['username'];
-	// 	$_SESSION['email'] =  $_POST['email'];
-	// 	$_SESSION['password'] = $_POST['password'];
-	// }
-
-
-
-
-	// 	$servername = "localhost:3307";
-	// 	$username = "root";
-	// 	$password = "123";
-	// 	$dbname = "pay_plane";
-
-	// 	try {
-	// 		$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-	// 		// set the PDO error mode to exception
-	// 		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	// 		$sql = "INSERT INTO user_table (user_name, user_email, user_password,user_role)
-	//   VALUES ('Daniel', 'Raubal', 'john@example.com','user')";
-	// 		// use exec() because no results are returned
-	// 		// $conn->exec($sql);
-	// 		echo "New record created successfully";
-	// 	} catch (PDOException $e) {
-	// 		echo $sql . "<br>" . $e->getMessage();
-	// 	}
-
-	// 	$conn = null;
-
-
-
 	?>
 
 </head>
 
 <body>
-
-
-
-
 	<div class="justify-between flex flex-col absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
 
-
 		<?php NavBar(); ?>
-
 
 		<div class="bg-white border shadow-sm md:w-96 rounded-lg w-1/2 py-6 m-auto">
 			<form action="signup_methods.php " method="post">
@@ -103,7 +60,7 @@
 					</div>
 				</div>
 			</form>
-			<h1 class="font-bold text-red-500 pb-2 text-1xl text-center mt-8">
+			<h1 class="font-bold text-blue-500 pb-2 text-1xl text-center mt-8">
 				<?php
 				if (isset($_SESSION['user_created'])) {
 					echo $_SESSION['user_created'];
@@ -113,21 +70,9 @@
 
 		</div>
 
-
 		<?php Footer(); ?>
 
-
-
-
-
-
 	</div>
-
-
-
-
-
-
 
 	</div>
 </body>

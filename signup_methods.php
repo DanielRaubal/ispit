@@ -1,14 +1,6 @@
 <?php
 require "database.php";
-
-
 session_start();
-
-if (isset($_POST['execute'])) {
-	// Your PHP script code goes here
-	#CreateUser();
-}
-
 
 $password = $_POST['password'];
 $password_repeat = $_POST['password_repeat'];
@@ -21,13 +13,8 @@ if ($password != $password_repeat) {
 }
 
 
-
-
 $username = $_POST['username'];
 $email = $_POST['email'];
-
-
-
 
 
 echo "Username: $username <br>";
@@ -41,7 +28,6 @@ function CreateUser($name, $email, $password)
 {
 	$conn = ConnectToDatabase();
 
-	// Check if the email already exists
 	$checkStmt = $conn->prepare("SELECT COUNT(*) AS count FROM user_table WHERE user_email = :email");
 	$checkStmt->bindParam(':email', $email);
 	$checkStmt->execute();
@@ -50,7 +36,6 @@ function CreateUser($name, $email, $password)
 	if ($count > 0) {
 		$_SESSION['user_created'] = "Email already exists. Cannot create account.";
 	} else {
-		// Insert the user into the database
 		$insertStmt = $conn->prepare("INSERT INTO user_table (user_name, user_email, user_password, user_role) 
                                      VALUES (:name, :email, :password, 'user')");
 		$insertStmt->bindParam(':name', $name);

@@ -4,7 +4,6 @@ session_start();
 IsNotAdmin();
 
 if (isset($_POST['execute'])) {
-	// Your PHP script code goes here
 	ValidateUser($_POST['user_id']);
 }
 

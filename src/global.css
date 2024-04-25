@@ -1,24 +1,54 @@
 @keyframes animation_color_changer {
-  0% {color: #1d4ed8;}
-  50% {color: #3730a3;}
-  100% {color: #1d4ed8;}
+  0% {
+    color: #1d4ed8;
+  }
+  50% {
+    color: #3730a3;
+  }
+  100% {
+    color: #1d4ed8;
+  }
 }
 
 .color_changer {
-	color: #60a5fa;
+  color: #60a5fa;
   animation: infinite animation_color_changer 8s;
 }
 
 
-body {
-  font-family: 'Poppins', sans-serif; /* Use Poppins font */
+.unselectable {
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+/* 
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-.unselectable {
- user-drag: none;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  text-align: center;
 }
+
+td {
+  padding: 4px;
+}
+
+td:nth-last-child(2) {
+  /* Your styles here */
+  /* border: 2px solid;
+}
+
+td tr:nth-child(even) {
+  background-color: #dddddd;
+} */
+
+

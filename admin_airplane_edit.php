@@ -5,7 +5,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="stylesheet" href="../pay_plane/src/global.css">
 
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
 	<title>planesforever.com -
@@ -25,14 +24,10 @@
 		die();
 	}
 
-	$airplane_id = $_POST['airplane_id']; // Assuming you're getting user_id from the form submission
+	$airplane_id = $_POST['airplane_id'];
 	echo "AIRCRAFT|||$airplane_id|||| <br><br>";
 
-
 	$_SESSION['airplane_id'] = $airplane_id;
-
-
-
 
 	$stmt = $conn->prepare("SELECT * FROM airplane_table WHERE airplane_id = :airplane_id");
 	$stmt->bindParam(':airplane_id', $airplane_id);
@@ -40,14 +35,11 @@
 
 
 	if ($stmt->columnCount() > 0) {
-		// User found, fetch the data
 		$airplane = $stmt->fetch(PDO::FETCH_ASSOC);
 
-		// Display all columns
 		echo "<pre>";
 		print_r($airplane);
 		echo "</pre>";
-
 
 		$manufacturer = $airplane["airplane_manufacturer"];
 		$model = $airplane["airplane_model"];
@@ -61,70 +53,31 @@
 		$length = $airplane["airplane_length"];
 		$price = $airplane["airplane_price"];
 		$state = $airplane["airplane_state"];
-
-		// Do something with the user data
-
 	} else {
-		// User not found
 		echo "Airplane not found";
 	}
 
-	#echo $result->errorInfo();
 	if ($result) {
 		echo "Query executed successfully!";
 	} else {
 		echo "Error executing query.";
 	}
 
-
 	?>
-
-	<style>
-		table {
-			font-family: arial, sans-serif;
-			border-collapse: collapse;
-			width: 100%;
-		}
-
-		td,
-		th {
-			border: 1px solid #dddddd;
-			text-align: left;
-			text-align: center;
-
-		}
-
-		td {
-			padding: 4px;
-		}
-
-
-
-		td:nth-last-child(2) {
-			/* Your styles here */
-			border: 2px solid;
-
-		}
-
-		td tr:nth-child(even) {
-			background-color: #dddddd;
-		}
-	</style>
-
 
 </head>
 
 <body>
 	<div class="justify-between flex flex-col absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
+
 		<?php NavBar(); ?>
-		<div class="gap-y-4 flex flex-col">
 
+		<div class="gap-y-4 flex flex-col m-auto">
 
-
-			<div class="bg-white border shadow-sm rounded-lg w-2/3 py-6 m-auto p-4">
+			<div class="bg-white border shadow-sm rounded-lg container py-6 m-auto flex  p-4">
 				<form action="admin_airplane_edit_methods.php" method="post">
 					<div class="border-red-500 px-4">
-						<h1 class="font-bold text-gray-400 pb-2 text-3xl">Add New Aircraft</h1>
+						<h1 class="font-bold text-gray-400 pb-2 text-3xl">Edit Aircraft</h1>
 
 						<p class="font-bold text-gray-400 pb-2 text-xl">
 							<?php if (isset($_SESSION['airplane_created']) && $_SESSION['airplane_created'] != "") {
@@ -181,9 +134,9 @@
 					</div>
 				</form>
 			</div>
-
-			<?php Footer(); ?>
 		</div>
+		<?php Footer(); ?>
+
 	</div>
 </body>
 

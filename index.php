@@ -11,7 +11,6 @@ IsLoggedIn();
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="stylesheet" href="../pay_plane/src/global.css">
 
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
 	<title>planesforever.com -
@@ -41,7 +40,7 @@ IsLoggedIn();
 					<h1 class="text-5xl md:text-6xl font-bold text-blue-400 px-8 text-center  color_changer ">
 						planesforever.com
 					</h1>
-					<p class=" flex px-8 text-blue-600 text-center justify-center">Take Flight, Make Profits: Sell Your Aircraft Hassle-Free!</p>
+					<p class=" flex px-8 text-blue-400 text-center justify-center font-semibold">Take Flight, Make Profits: Sell Your Aircraft Hassle-Free!</p>
 				</div>
 
 				<img src="../pay_plane/src/images/suhoi.png" class="w-4/5 opacity-95 m-auto ">

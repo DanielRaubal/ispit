@@ -5,7 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="stylesheet" href="../pay_plane/src/global.css">
+	<link rel="stylesheet" href="tables.css">
+
 
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
 	<title>planesforever.com -
@@ -16,31 +17,8 @@
 
 	<?php
 	session_start();
+	IsNotUser();
 	?>
-
-	<style>
-		table {
-			font-family: arial, sans-serif;
-			border-collapse: collapse;
-			width: 100%;
-		}
-
-		td,
-		th {
-			border: 1px solid #dddddd;
-			text-align: left;
-			text-align: center;
-
-		}
-
-		td {
-			padding: 4px;
-		}
-
-		td tr:nth-child(even) {
-			background-color: #dddddd;
-		}
-	</style>
 
 </head>
 
@@ -52,25 +30,21 @@
 
 			<div class="bg-white border shadow-sm rounded-lg container py-6 m-auto p-4">
 
-				<table>
+				<table class="w-full">
 					<tr>
 						<th>[id]</th>
 						<th>airplane unique id</th>
 						<th>model</th>
 						<th>price</th>
-
-
+						<th>Actions</th>
 					</tr>
 
 					<?php
 					$price = 0;
 					$index = 0;
 					try {
-						$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-						// set the PDO error mode to exception
-						$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+						$conn = ConnectToDatabase();
 
-						// Assuming $_SESSION['user_id'] contains the user's ID
 						$user_id = $_SESSION['user_id'];
 						$sql = "SELECT * FROM cart_table WHERE cart_user_id = :user_id";
 						$stmt = $conn->prepare($sql);
@@ -80,13 +54,11 @@
 
 						$oh_no = false;
 						if ($result !== false && count($result) > 0) {
-							echo "<table>"; // Start table
-							echo "<tr><th>Index</th><th>Cart Airplane ID</th><th>Airplane Model</th><th>Airplane Price</th><th>Action</th></tr>"; // Table headers
+
 
 							foreach ($result as $row) {
 								$cart_airplane_id = $row["cart_airplane_id"];
 
-								// Fetch airplane details
 								$airplaneQuery = "SELECT * FROM airplane_table WHERE airplane_id = :cart_airplane_id";
 								$airplaneStmt = $conn->prepare($airplaneQuery);
 								$airplaneStmt->bindParam(':cart_airplane_id', $cart_airplane_id, PDO::PARAM_INT);
@@ -105,7 +77,7 @@
 									echo "<td class='bg-red-500 hover:bg-red-600'>
                     <form method='post' action='cart_delete_methods.php'>
                         <input class='w-full' type='hidden' name='cart_id' value='{$row['cart_id']}'>
-                        <button type='submit' name='execute' value='edit' class='text-white'>🗑️</button>
+                        <button type='submit' name='execute' value='edit' class='text-white w-full h-full'>🗑️</button>
                     </form>
                 </td>";
 
@@ -113,12 +85,12 @@
 								}
 							}
 
-							echo "</table>"; // End table
+							echo "</table>";
 						} else {
 							echo "No rows found in cart_table.";
 						}
 
-						echo "<p class='text-2xl mt-4'>Total Price: $price$</p>";
+						echo "<p class='text-2xl mt-4 font-semibold text-green-600'>Total Price: $price$</p>";
 					} catch (PDOException $e) {
 						echo "Error: " . $e->getMessage();
 					}

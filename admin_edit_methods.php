@@ -6,8 +6,6 @@ IsNotAdmin();
 UpdateUser();
 function UpdateUser()
 {
-
-
 	$validated = 1;
 
 	$conn = ConnectToDatabase();

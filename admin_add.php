@@ -5,7 +5,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="stylesheet" href="../pay_plane/src/global.css">
 
 	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
 	<title>planesforever.com -
@@ -17,57 +16,13 @@
 	<?php
 	session_start();
 	IsNotAdmin();
-
-
-
 	?>
-
-	<style>
-		table {
-			font-family: arial, sans-serif;
-			border-collapse: collapse;
-			width: 100%;
-		}
-
-		td,
-		th {
-			border: 1px solid #dddddd;
-			text-align: left;
-			text-align: center;
-
-		}
-
-		td {
-			padding: 4px;
-		}
-
-
-
-		td:nth-last-child(2) {
-			/* Your styles here */
-			border: 2px solid;
-
-		}
-
-		td tr:nth-child(even) {
-			background-color: #dddddd;
-		}
-	</style>
-
 
 </head>
 
 <body>
-
-
-
-
 	<div class="justify-between flex flex-col absolute inset-0 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
-
-
 		<?php NavBar(); ?>
-
-
 
 		<div class="gap-y-4 flex flex-col m-auto">
 
@@ -83,12 +38,11 @@
 							} ?>
 						</p>
 
-
 						<label for="model">Aircraft model name</label>
-						<input class="border-b w-full py-2" type="text" placeholder="model" name="model" value="Model XYZ" required>
+						<input class="border-b w-full py-2" type="text" placeholder="model" name="model" value="Boeing" required>
 
 						<label for="manufacturer">Manufacturer name</label>
-						<input class="border-b w-full py-2" type="text" placeholder="manufacturer" name="manufacturer" value="ABC Aircrafts" required>
+						<input class="border-b w-full py-2" type="text" placeholder="manufacturer" name="manufacturer" value="747" required>
 
 						<label for="mileage">Mileage</label>
 						<input class="border-b w-full py-2" type="text" placeholder="mileage" name="mileage" value="5000" required>
@@ -103,7 +57,7 @@
 						<input class="border-b w-full py-2" type="text" placeholder="price" name="price" value="100000" required>
 
 						<label for="about">About</label>
-						<input class="border-b w-full py-2" type="text" placeholder="about" name="about" value="This aircraft is designed for XYZ purpose." required>
+						<input class="border-b w-full py-2" type="text" placeholder="about" name="about" value="This aircraft is designed for flying large number of passingers." required>
 
 						<label for="length">Length</label>
 						<input class="border-b w-full py-2" type="text" placeholder="length" name="length" value="50 ft" required>
@@ -132,23 +86,8 @@
 					</div>
 				</form>
 			</div>
-
-
-
-
-
-
-
-
-
 		</div>
-
 		<?php Footer(); ?>
-
-
-
-
-
 
 	</div>
 </body>

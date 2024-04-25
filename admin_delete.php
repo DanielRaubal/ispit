@@ -5,7 +5,6 @@ IsNotAdmin();
 
 DeleteUser();
 
-
 function DeleteUser()
 {
 	$conn = ConnectToDatabase();
