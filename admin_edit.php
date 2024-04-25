@@ -21,7 +21,7 @@
 	$conn = ConnectToDatabase();
 
 	$userId = $_POST['user_id'];
-	$_SESSION['user_id'] = $userId;
+	$_SESSION['user_selected_id'] = $userId;
 
 	$stmt = $conn->prepare("SELECT * FROM user_table WHERE user_id = :userId");
 	$stmt->bindParam(':userId', $userId);

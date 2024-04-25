@@ -4,7 +4,7 @@ session_start();
 IsNotAdmin();
 
 if (isset($_POST['execute'])) {
-	ValidateUser($_POST['user_selected_id']);
+	ValidateUser($_POST['user_id']);
 }
 
 function ValidateUser($id)
@@ -13,7 +13,7 @@ function ValidateUser($id)
 
 	$conn = ConnectToDatabase();
 
-	$sql = "UPDATE user_table SET user_validated = 1 WHERE user_selected_id = $id";
+	$sql = "UPDATE user_table SET user_validated = 1 WHERE user_id = $id";
 	$result = $conn->query($sql);
 	#echo $result->errorInfo();
 	if ($result) {
