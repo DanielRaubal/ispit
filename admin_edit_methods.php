@@ -17,7 +17,7 @@ function UpdateUser()
 	$stmt->bindParam(':password', $_POST["password"]);
 	$stmt->bindParam(':role', $_POST['roles']);
 	$stmt->bindParam(':validated', $validated);
-	$stmt->bindParam(':userId', $_SESSION['user_id']);
+	$stmt->bindParam(':userId', $_SESSION['user_selected_id']);
 	$stmt->execute();
 
 

@@ -97,21 +97,21 @@
 
 									echo "<td class='bg-blue-500 hover:bg-blue-600'>
             <form method='post' action='admin_methods.php'>
-                <input type='hidden' name='user_id' value='$row[user_id]'>
+                <input type='hidden' name='user_selected_id' value='$row[user_id]'>
                 <button type='submit' name='execute' value='validate' class='text-white'>Validate</button>
             </form>
         </td>";
 
 									echo "<td class='bg-yellow-500 hover:bg-yellow-600 '>
             <form method='post' action='admin_edit.php'>
-                <input type='hidden' name='user_id' value='$row[user_id]'>
+                <input type='hidden' name='user_selected_id' value='$row[user_id]'>
                 <button type='submit' name='execute' value='edit' class='text-white'>✏️</button>
             </form>
         </td>";
 
 									echo "<td class='bg-red-500 hover:bg-red-600 ' >
             <form method='post' action='admin_delete.php'>
-                <input type='hidden' name='user_id' value='$row[user_id]'>
+                <input type='hidden' name='user_selected_id' value='$row[user_id]'>
                 <button  type='submit' name='execute' value='edit' class='text-white'>🗑️</button>
             </form>
         </td>";
