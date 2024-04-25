@@ -7,7 +7,7 @@
 	<script src="https://cdn.tailwindcss.com"></script>
 
 
-	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
+	<link rel="icon" type="image/png" href="src/images/favicon.png">
 	<title>planesforever.com -
 		<?php
 		include "database.php";

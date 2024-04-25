@@ -11,7 +11,7 @@ IsNotUser();
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://cdn.tailwindcss.com"></script>
 
-	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
+	<link rel="icon" type="image/png" href="src/images/favicon.png">
 	<title>planesforever.com -
 		<?php
 		echo ScriptName(); ?>
@@ -51,9 +51,9 @@ IsNotUser();
 
 					echo "<a href='item.php?id=$airplane_id' class='bg-white border rounded-lg shadow-sm w-full md:w-1/4 mt-4 hover:border-blue-300'>
             <div class='h-36 flex'>
-                <img src='../pay_plane/src/images/airplane_high.webp' class='w-full object-cover  h-36 m-auto rounded-lg'>
+                <img src='src/images/airplane_high.webp' class='w-full object-cover  h-36 m-auto rounded-lg'>
                 <div class='bg-white rounded-full w-9 h-9 absolute flex opacity-60'>
-                    <img src='../pay_plane/src/images/$icon' class='w-6 m-auto'>
+                    <img src='src/images/$icon' class='w-6 m-auto'>
                 </div>
             </div>
 

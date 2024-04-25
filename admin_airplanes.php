@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="/src/global.css">
 	<link rel="stylesheet" href="tables.css">
 
-	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
+	<link rel="icon" type="image/png" href="src/images/favicon.png">
 	<title>planesforever.com -
 		<?php
 		include "database.php";

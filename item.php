@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://cdn.tailwindcss.com"></script>
 
-	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
+	<link rel="icon" type="image/png" href="src/images/favicon.png">
 	<title>planesforever.com -
 		<?php
 		include "database.php";
@@ -64,7 +64,7 @@
 		<div class="container flex flex-col justify-center m-auto px-4 mb-2 ">
 
 			<div class="w-full flex justify-center mx-auto shadow-lg border-2  rounded-lg mb-14 ">
-				<img src="../pay_plane/src/images/airplane_high.webp" class="w-full rounded-lg h-full m-auto object-cover">
+				<img src="src/images/airplane_high.webp" class="w-full rounded-lg h-full m-auto object-cover">
 			</div>
 
 			<div class="justify-center flex  ">

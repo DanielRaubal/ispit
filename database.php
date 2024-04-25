@@ -1,7 +1,7 @@
 <?php
-$servername = "localhost:3307";
-$username = "root";
-$password = "123";
+$db_servername = "localhost:3307";
+$db_username = "root";
+$db_password = "123";
 $dbname = "pay_plane";
 
 if (!isset($_SESSION["user_logout"])) {
@@ -11,8 +11,8 @@ if (!isset($_SESSION["user_logout"])) {
 
 function ConnectToDatabase()
 {
-	global $servername, $dbname, $password, $username;
-	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+	global $db_servername, $dbname, $db_password, $db_username;
+	$conn = new PDO("mysql:host=$db_servername;dbname=$dbname", $db_username, $db_password);
 	// set the PDO error mode to exception
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -255,7 +255,7 @@ function NavBar()
 	<nav class='bg-white border-gray-200 dark:bg-gray-900 border-b mb-10'>
     <div class='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4'>
         <a href='index.php' class='flex items-center space-x-3 rtl:space-x-reverse'>
-            <img src='../pay_plane/src/images/favicon.png' class='h-8 opacity-60 hover:animate-pulse' alt='Flowbite Logo' />
+            <img src='src/images/favicon.png' class='h-8 opacity-60 hover:animate-pulse' alt='Flowbite Logo' />
             <span class='self-center text-2xl font-semibold whitespace-nowrap dark:text-white'></span>
         </a>
         <button data-collapse-toggle='navbar-default' type='button' class='inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600' aria-controls='navbar-default' aria-expanded='false'>

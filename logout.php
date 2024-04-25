@@ -6,8 +6,6 @@ header("Location: login.php");
 
 $defined_vars = get_defined_vars();
 
-
-
 $_SESSION["user_role"] = "";
 
 echo "userExist: " . CheckUserExist() . "<br><br>";

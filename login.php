@@ -13,7 +13,7 @@ IsLoggedIn();
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://cdn.tailwindcss.com"></script>
 
-	<link rel="icon" type="image/png" href="../pay_plane/src/images/favicon.png">
+	<link rel="icon" type="image/png" href="src/images/favicon.png">
 	<title>planesforever.com -
 		<?php
 		ScriptName(); ?>
