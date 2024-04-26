@@ -72,7 +72,7 @@
 
 						<div class="bg-white border mt-4 rounded-lg p-6">
 							<label for="email">Email Adress</label>
-							<input class="border-b w-full py-2" type="text" placeholder="example@gmail.com" name="email" value="<?php echo $email; ?>">
+							<input class="border-b w-full py-2" type="email" placeholder="example@gmail.com" name="email" value="<?php echo $email; ?>">
 						</div>
 
 						<div class="bg-white border mt-4 rounded-lg p-6">

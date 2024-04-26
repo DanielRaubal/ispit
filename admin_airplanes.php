@@ -54,13 +54,13 @@
 						<th>mileage</th>
 						<th>created product</th>
 						<th>motors</th>
-						<th>price</th>
 						<th>lenght</th>
 						<th>wingspan</th>
 						<th>range</th>
 						<th>seats</th>
+						<th>price</th>
 						<th>state</th>
-						<th>year</th>
+						<th>year of production</th>
 
 						<th colspan="3">Actions</th>
 
@@ -84,11 +84,11 @@
 								echo "<td class=''>$row[airplane_mileage]km</td>";
 								echo "<td class=''>$row[airplane_created]</td>";
 								echo "<td class=''>$row[airplane_motors]</td>";
-								echo "<td class='font-bold'>$row[airplane_price]$</td>";
 								echo "<td class=''>$row[airplane_length]m</td>";
 								echo "<td class=''>$row[airplane_wingspan]m</td>";
 								echo "<td class=''>$row[airplane_range]km</td>";
 								echo "<td class=''>$row[airplane_seats]</td>";
+								echo "<td class='font-bold'>$row[airplane_price]$</td>";
 								echo "<td class='font-bold'>$row[airplane_state]</td>";
 								echo "<td class='font-bold'>$row[airplane_year]</td>";
 

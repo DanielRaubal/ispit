@@ -52,7 +52,6 @@
 						$stmt->execute();
 						$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-						$oh_no = false;
 						if ($result !== false && count($result) > 0) {
 
 
@@ -87,7 +86,7 @@
 
 							echo "</table>";
 						} else {
-							echo "No rows found in cart_table.";
+							echo "<p class='font-semibold text-blue-500'>You dont have any item in the cart at the moment.<p>";
 						}
 
 						echo "<p class='text-2xl mt-4 font-semibold text-green-600'>Total Price: $price$</p>";

@@ -44,32 +44,32 @@
 						<label for="manufacturer">Manufacturer name</label>
 						<input class="border-b w-full py-2" type="text" placeholder="manufacturer" name="manufacturer" value="747" required>
 
-						<label for="mileage">Mileage</label>
-						<input class="border-b w-full py-2" type="text" placeholder="mileage" name="mileage" value="5000" required>
+						<label for="mileage">Mileage (in kilometers)</label>
+						<input class="border-b w-full py-2" type="number" placeholder="mileage" name="mileage" value="5000" required>
 
 						<label for="year">Manufacturing year</label>
-						<input class="border-b w-full py-2" type="text" placeholder="year" name="year" value="2022" required>
+						<input class="border-b w-full py-2" type="number" placeholder="year" name="year" value="2022" required>
 
 						<label for="motors">Motors</label>
-						<input class="border-b w-full py-2" type="text" placeholder="motors" name="motors" value="2" required>
+						<input class="border-b w-full py-2" type="number" placeholder="motors" name="motors" value="2" required>
 
 						<label for="price">Price</label>
-						<input class="border-b w-full py-2" type="text" placeholder="price" name="price" value="100000" required>
+						<input class="border-b w-full py-2" type="number" placeholder="price" name="price" value="100000" required>
 
 						<label for="about">About</label>
 						<input class="border-b w-full py-2" type="text" placeholder="about" name="about" value="This aircraft is designed for flying large number of passingers." required>
 
-						<label for="length">Length</label>
-						<input class="border-b w-full py-2" type="text" placeholder="length" name="length" value="50 ft" required>
+						<label for="length">Length (in meters)</label>
+						<input class="border-b w-full py-2" type="number" placeholder="length" name="length" value="50" required>
 
-						<label for="wingspan">Wingspan</label>
-						<input class="border-b w-full py-2" type="text" placeholder="wingspan" name="wingspan" value="60 ft" required>
+						<label for="wingspan">Wingspan (in meters)</label>
+						<input class="border-b w-full py-2" type="number" placeholder="wingspan" name="wingspan" value="60" required>
 
-						<label for="range">Range</label>
-						<input class="border-b w-full py-2" type="text" placeholder="range" name="range" value="2000 miles" required>
+						<label for="range">Range (in kilometers)</label>
+						<input class="border-b w-full py-2" type="number" placeholder="range" name="range" value="2000" required>
 
 						<label for="seats">Seats</label>
-						<input class="border-b w-full py-2" type="text" placeholder="seats" name="seats" value="6" required>
+						<input class="border-b w-full py-2" type="number" placeholder="seats" name="seats" value="6" required>
 
 						<div class="bg-white border mt-4 rounded-lg p-6 flex flex-col">
 							<label for="state">State</label>

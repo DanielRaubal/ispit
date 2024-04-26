@@ -93,13 +93,13 @@
 						<input class="border-b w-full py-2" type="text" placeholder="manufacturer" name="manufacturer" value="<?php echo $manufacturer; ?>" required>
 
 						<label for="mileage">Mileage</label>
-						<input class="border-b w-full py-2" type="text" placeholder="mileage" name="mileage" value="<?php echo $mileage; ?>" required>
+						<input class="border-b w-full py-2" type="number" placeholder="mileage" name="mileage" value="<?php echo $mileage; ?>" required>
 
 						<label for="year">Manufacturing year</label>
-						<input class="border-b w-full py-2" type="text" placeholder="year" name="year" value="<?php echo $year; ?>" required>
+						<input class="border-b w-full py-2" type="number" placeholder="year" name="year" value="<?php echo $year; ?>" required>
 
 						<label for="motors">Motors</label>
-						<input class="border-b w-full py-2" type="text" placeholder="motors" name="motors" value="<?php echo $motors; ?>" required>
+						<input class="border-b w-full py-2" type="number" placeholder="motors" name="motors" value="<?php echo $motors; ?>" required>
 
 						<label for="price">Price</label>
 						<input class="border-b w-full py-2" type="number" placeholder="price" name="price" value="<?php echo $price; ?>" required>
