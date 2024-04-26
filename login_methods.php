@@ -23,28 +23,36 @@ function Login($email, $password)
 	$checkStmt->bindParam(':email', $email);
 	$checkStmt->execute();
 
-	if ($checkStmt->columnCount() > 0) {
-		$_SESSION['user_connected'] = "User is connected!";
+	if ($checkStmt->rowCount() > 0) {
 
 		$userData = $checkStmt->fetch(PDO::FETCH_ASSOC);
-		$_SESSION['user_id'] = $userData['user_id'];
-		$_SESSION['user_role'] = $userData['user_role'];
-		$_SESSION['user_name'] = $userData['user_name'];
-		$_SESSION['user_email'] = $userData['user_email'];
-		$_SESSION['user_validated'] = $userData['user_validated'];
+		echo $checkStmt->rowCount();
+		echo $userData['user_name'];
+		echo "<br>";
 
-		if ($userData == 0) {
-			$_SESSION['user_connected'] = "User is not validated!";
+		
+		$_SESSION['user_connected'] = "User is not validated!";
+
+		if ($userData['user_validated'] == 1) {
+			$_SESSION['user_id'] = $userData['user_id'];
+			$_SESSION['user_role'] = $userData['user_role'];
+			$_SESSION['user_name'] = $userData['user_name'];
+			$_SESSION['user_email'] = $userData['user_email'];
+			$_SESSION['user_validated'] = $userData['user_validated'];
+
+			$_SESSION['user_connected'] = "User is connected!";
+			header("Location: search.php");
+			die();
 		}
 
-
-		header("Location: search.php");
 	} else {
 		$_SESSION['user_connected'] = "Password or email incorrect.";
-		header("Location: login.php");
+
 	}
 	#$_SESSION['user_connected'] = "User is not connecte";
 
+	header("Location: login.php");
+	die();
 
 	echo $_SESSION['user_connected'];
 }

@@ -92,7 +92,7 @@
 						<label for="manufacturer">Manufacturer name</label>
 						<input class="border-b w-full py-2" type="text" placeholder="manufacturer" name="manufacturer" value="<?php echo $manufacturer; ?>" required>
 
-						<label for="mileage">Mileage</label>
+						<label for="mileage">Mileage (in kilometers)</label>
 						<input class="border-b w-full py-2" type="number" placeholder="mileage" name="mileage" value="<?php echo $mileage; ?>" required>
 
 						<label for="year">Manufacturing year</label>
@@ -107,13 +107,13 @@
 						<label for="about">About</label>
 						<input class="border-b w-full py-2" type="text" placeholder="about" name="about" value="<?php echo $about; ?>" required>
 
-						<label for="length">Length</label>
+						<label for="length">Length (in meters)</label>
 						<input class="border-b w-full py-2" type="number" placeholder="length" name="length" value="<?php echo $length; ?>" required>
 
-						<label for="wingspan">Wingspan</label>
+						<label for="wingspan">Wingspan (in meters)</label>
 						<input class="border-b w-full py-2" type="number" placeholder="wingspan" name="wingspan" value="<?php echo $wingspan; ?>" required>
 
-						<label for="range">Range</label>
+						<label for="range">Range (in kilometers)</label>
 						<input class="border-b w-full py-2" type="number" placeholder="range" name="range" value="<?php echo $range; ?>" required>
 
 						<label for="seats">Seats</label>

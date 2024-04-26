@@ -51,7 +51,7 @@ IsLoggedIn();
 
 
 				</div>
-				<h1 class="font-bold text-red-500 pb-2 text-1xl text-center mt-8">
+				<h1 class="font-bold text-blue-500 pb-2 text-1xl text-center mt-8">
 					<?php
 					if (isset($_SESSION['user_connected'])) {
 						if (isset($_SESSION['user_validated'])) {

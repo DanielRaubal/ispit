@@ -1,5 +1,5 @@
 <?php
-$db_servername = "localhost:3307";
+$db_servername = "localhost:3306";
 $db_username = "root";
 $db_password = "123";
 $dbname = "pay_plane";
@@ -126,37 +126,33 @@ function IsNotAdmin()
 {
 	if (isset($_SESSION["user_role"])) {
 		if (
-			$_SESSION["user_role"] == "user"
+			$_SESSION["user_role"] == "user" && $_SESSION["user_validated"] == 1
 		) {
 			header("Location: search.php");
 			die();
 		}
 	} else {
+		$_SESSION['user_connected'] = "You are not validated or not qualified to be there!";
 		header("Location: login.php");
 		die();
 	}
 }
-
 
 function IsNotUser()
 {
 	if (isset($_SESSION["user_role"])) {
 		if (
-			$_SESSION["user_role"] == "admin"
+			$_SESSION["user_role"] == "admin" && $_SESSION["user_validated"] == 1
 		) {
 			header("Location: admin.php");
 			die();
 		}
 	} else {
+		$_SESSION['user_connected'] = "You are not validated or not qualified to be there!";
 		header("Location: login.php");
 		die();
 	}
 }
-
-
-
-
-
 
 function IsLoggedIn()
 {
