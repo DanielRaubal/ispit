@@ -50,9 +50,8 @@ function Login($email, $password)
 
 	}
 	#$_SESSION['user_connected'] = "User is not connecte";
+	echo $_SESSION['user_connected'];
 
 	header("Location: login.php");
 	die();
-
-	echo $_SESSION['user_connected'];
 }

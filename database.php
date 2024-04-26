@@ -1,5 +1,5 @@
 <?php
-$db_servername = "localhost:3306";
+$db_servername = "localhost:3307";
 $db_username = "root";
 $db_password = "123";
 $dbname = "pay_plane";

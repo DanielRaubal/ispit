@@ -27,8 +27,8 @@
 		<?php NavBar(); ?>
 
 		<div class="gap-y-4 flex flex-col">
-
-			<div class="bg-white border shadow-sm rounded-lg container py-6 m-auto p-4">
+			<div class="bg-white border shadow-sm rounded-lg container py-2 m-auto p-4">
+				<p class="text-2xl font-semibold mb-3">CART</p>
 
 				<table class="w-full">
 					<tr>

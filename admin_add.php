@@ -39,10 +39,10 @@
 						</p>
 
 						<label for="model">Aircraft model name</label>
-						<input class="border-b w-full py-2" type="text" placeholder="model" name="model" value="Boeing" required>
+						<input class="border-b w-full py-2" type="text" placeholder="model" name="model" value="747" required>
 
 						<label for="manufacturer">Manufacturer name</label>
-						<input class="border-b w-full py-2" type="text" placeholder="manufacturer" name="manufacturer" value="747" required>
+						<input class="border-b w-full py-2" type="text" placeholder="manufacturer" name="manufacturer" value="Boeing" required>
 
 						<label for="mileage">Mileage (in kilometers)</label>
 						<input class="border-b w-full py-2" type="number" placeholder="mileage" name="mileage" value="5000" required>

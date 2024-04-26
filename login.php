@@ -16,7 +16,7 @@ IsLoggedIn();
 	<link rel="icon" type="image/png" href="src/images/favicon.png">
 	<title>planesforever.com -
 		<?php
-		ScriptName(); ?>
+		echo ScriptName(); ?>
 	</title>
 
 </head>

@@ -40,7 +40,7 @@
 						</button>
 					</a>
 					<a href="admin_add.php" class="w-full ">
-						<button class="bg-white border mt-4 rounded-lg px-6 w-full hover:bg-blue-500 hover:text-white mt-4">
+						<button class="bg-white border rounded-lg px-6 w-full hover:bg-blue-500 hover:text-white mt-4">
 							<p class="font-bold px-6 py-2 text-xl m-auto">Add New Airplane</p>
 						</button>
 					</a>
