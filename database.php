@@ -157,12 +157,15 @@ function IsNotUser()
 function IsLoggedIn()
 {
 	if (isset($_SESSION["user_role"])) {
+		if($_SESSION["user_validated"] == 1)
+		{
 		if ($_SESSION["user_role"] == "admin") {
-			header("Location: admin.php");
+				header("Location: admin.php");
+				die();
+			}
+			header("Location: search.php");
 			die();
 		}
-		header("Location: search.php");
-		die();
 	}
 
 /*
